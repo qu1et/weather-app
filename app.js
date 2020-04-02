@@ -7,17 +7,17 @@ if (!location) {
     return console.log('Please add an address!');
 }
 
-geocode(location, (error, data) => {
+geocode(location, (error, { latitude, longitude, location }) => {
     if (error) {
         return console.log(error);
     }
 
-    forecast(data.latitude, data.longitude, (error, weatherData) => {
+    forecast(latitude, longitude, (error, weatherData) => {
         if (error) {
             return console.log (error);
         }
 
-        console.log(data.location);
+        console.log(location);
         console.log(weatherData);
     });
 });
